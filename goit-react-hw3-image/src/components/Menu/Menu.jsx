@@ -10,8 +10,12 @@ const Menu = () => {
   const handleOpenModal = () => {
     setOpenModal(!openModal);
   };
-
-  return (
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+  return openModal ? (
+    <MenuModal onClose={handleCloseModal} />
+  ) : (
     <div className="menu-wrapper">
       <FaAngleLeft className="menu-icon" onClick={handleOpenModal} />
     </div>

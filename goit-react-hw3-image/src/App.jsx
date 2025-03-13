@@ -1,10 +1,11 @@
 import './App.css';
-import Searchbar from './components/Searchbar/Searchbar';
+import Header from './components/Header/Header';
 
 function App() {
   return (
     <>
-      <Searchbar />
+      <Header />
+      {/* <Searchbar /> */}
 
       {/* Gallery */}
     </>

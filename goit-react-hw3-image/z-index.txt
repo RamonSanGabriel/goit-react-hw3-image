@@ -1,1 +1,1 @@
-searchbar - 100
+search-wrapper - 100

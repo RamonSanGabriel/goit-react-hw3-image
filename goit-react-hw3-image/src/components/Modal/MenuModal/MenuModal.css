@@ -1,9 +1,10 @@
 .overlay {
-  position: fixed; /* Stay in place */
+  position: sticky; /* Stay in place */
   z-index: 200; /* Sit on top */
+  top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
   /* overflow: auto; Enable scroll if needed */
   /* background-color: rgba(52, 52, 52, 0.8); */
 }
@@ -13,13 +14,10 @@
   /* background-color: rgba(52, 52, 52, 0.2); */
   position: relative;
   top: 0;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
   padding: 0 10px 5px;
 }
-.container {
-  display: flex;
-  justify-content: flex-end;
-}
+
 .close-button {
   position: absolute;
   top: 5px;
@@ -39,6 +37,7 @@
   justify-content: center;
   align-items: center;
   padding: 0;
+  margin: 0 0 1em;
 }
 
 .container {

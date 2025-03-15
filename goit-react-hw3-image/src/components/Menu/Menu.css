@@ -1,7 +1,7 @@
 .menu-wrapper {
-  display: inline-flex;
+  /* display: inline-flex; */
   /* float: right; */
-  padding: 8px;
+  /* padding: 8px; */
 }
 .menu-icon {
   width: 20px;

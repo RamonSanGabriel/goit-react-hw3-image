@@ -7,7 +7,6 @@ import LeftArrowBtn from '../Buttons/LeftArrowBtn/LeftArrowBtn';
 
 const Menu = () => {
   const [openModal, setOpenModal] = useState(false);
-  const [hideArrowDown, setHideArrowDown] = useState(false);
 
   const handleOpenModal = () => {
     setOpenModal(true);

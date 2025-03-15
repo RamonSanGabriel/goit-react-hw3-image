@@ -2,9 +2,9 @@ import { FaAngleDown } from 'react-icons/fa6';
 
 const DownArrowBtn = ({ onClick, onChange }) => {
   return (
-    <>
-      <FaAngleDown onClick={onClick} />
-    </>
+    <button className="down-arrow btn" onClick={onClick}>
+      <FaAngleDown />
+    </button>
   );
 };
 

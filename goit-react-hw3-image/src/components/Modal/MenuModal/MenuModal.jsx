@@ -1,17 +1,15 @@
 import { navbar } from '../../../data/navbar';
+import LeftArrowBtn from '../../Buttons/LeftArrowBtn/LeftArrowBtn';
 import './MenuModal.css';
 
-const MenuModal = () => {
+const MenuModal = ({ onClick }) => {
   return (
     <div className="overlay">
-      {/* <button className="close-button" onClick={onClose}>
-        &times;
-      </button> */}
       <div className="menu-modal">
         <div className="nav-links">
           <ul className="nav-list">
             {navbar.map(({ id, name, link }) => (
-              <div className="container nav-list-items" key={id}>
+              <div className="nav-list-items container " key={id}>
                 <li>{name}</li>
               </div>
             ))}

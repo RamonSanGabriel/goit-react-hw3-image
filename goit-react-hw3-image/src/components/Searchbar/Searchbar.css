@@ -28,6 +28,7 @@
   color-scheme: light dark;
   background-color: #242424;
   flex: 1;
+  font-size: 1rem;
 }
 
 .search-btn {

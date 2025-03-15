@@ -5,16 +5,16 @@
   width: 100vw;
   height: 100vh;
   /* overflow: auto; Enable scroll if needed */
-  background-color: rgba(52, 52, 52, 0.8);
+  /* background-color: rgba(52, 52, 52, 0.8); */
 }
 .menu-modal {
   z-index: 300;
-  background-color: rgba(222, 217, 217, 0.167);
+  background-color: rgba(222, 217, 217, 0.4);
   /* background-color: rgba(52, 52, 52, 0.2); */
   position: relative;
   top: 0;
   justify-content: flex-end;
-  padding: 10px;
+  padding: 5px 10px;
 }
 .container {
   display: flex;
@@ -40,6 +40,7 @@
   align-items: center;
   padding: 0;
 }
+
 .container {
   max-width: 1024px;
   justify-content: center;
@@ -52,3 +53,8 @@
     padding: 10px 0;
   }
 }
+
+/* .nav-list-items:first-child {
+  background-color: red;
+  padding-top: 0;
+} */

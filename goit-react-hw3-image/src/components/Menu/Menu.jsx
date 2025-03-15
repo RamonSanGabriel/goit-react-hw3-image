@@ -1,25 +1,34 @@
-// import { FaRegCaretSquareDown } from 'react-icons/fa';
-import { FaAngleLeft } from 'react-icons/fa6';
 import './Menu.css';
 import { useState } from 'react';
 import MenuModal from '../Modal/MenuModal/MenuModal';
+import ImageGallery from '../ImageGallery/ImageGallery';
+import DownArrowBtn from '../Buttons/DownArrowBtn/DownArrowBtn';
+import LeftArrowBtn from '../Buttons/LeftArrowBtn/LeftArrowBtn';
 
 const Menu = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [hideArrowDown, setHideArrowDown] = useState(false);
 
   const handleOpenModal = () => {
-    setOpenModal(!openModal);
+    setOpenModal(true);
   };
   const handleCloseModal = () => {
     setOpenModal(false);
   };
-  return openModal ? (
-    <MenuModal onClose={handleCloseModal} />
-  ) : (
+  const handleHideArrowDown = () => {
+    const hideDownArrow = (style = { display: 'none' });
+  };
+
+  return (
     <div className="menu-wrapper">
-      <FaAngleLeft className="menu-icon" onClick={handleOpenModal} />
+      {openModal ? (
+        <LeftArrowBtn onClick={handleCloseModal} />
+      ) : openModal ? (
+        <MenuModal />
+      ) : (
+        <DownArrowBtn onClick={handleOpenModal} />
+      )}
     </div>
   );
 };
-
 export default Menu;

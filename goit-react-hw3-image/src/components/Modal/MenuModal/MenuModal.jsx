@@ -1,15 +1,12 @@
 import { navbar } from '../../../data/navbar';
 import './MenuModal.css';
 
-const MenuModal = ({ onClose }) => {
+const MenuModal = () => {
   return (
     <div className="overlay">
-      {/* <div className="close-button container"> */}
-      <button className="close-button" onClick={onClose}>
+      {/* <button className="close-button" onClick={onClose}>
         &times;
-        {/* <p>close</p> */}
-      </button>
-      {/* </div> */}
+      </button> */}
       <div className="menu-modal">
         <div className="nav-links">
           <ul className="nav-list">

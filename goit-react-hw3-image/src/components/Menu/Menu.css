@@ -1,10 +1,12 @@
 .menu-wrapper {
   display: inline-flex;
-  float: right;
-  /* justify-content: flex-end; */
+  /* float: right; */
   padding: 8px;
 }
 .menu-icon {
   width: 20px;
   height: 20px;
+}
+.menu-icon .active {
+  display: none;
 }

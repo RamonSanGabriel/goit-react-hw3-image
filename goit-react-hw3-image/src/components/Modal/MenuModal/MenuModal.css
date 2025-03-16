@@ -9,13 +9,25 @@
   /* background-color: rgba(52, 52, 52, 0.8); */
 }
 .menu-modal {
+  --d: 5s;
+
   z-index: 300;
-  background-color: rgba(222, 217, 217, 0.4);
-  /* background-color: rgba(52, 52, 52, 0.2); */
+  /* background-color: rgba(222, 217, 217, 0.4); */
+  background-color: rgba(52, 52, 52, 0.2);
   position: relative;
   top: 0;
   /* justify-content: flex-end; */
   padding: 0 10px 5px;
+  animation: var(--d) linear 1s modal;
+}
+
+@keyframes modal {
+  from {
+    transform: translateX(10);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 .close-button {

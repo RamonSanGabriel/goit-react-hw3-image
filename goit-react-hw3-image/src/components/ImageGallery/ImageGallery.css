@@ -1,3 +1,14 @@
 .gallery-list {
   padding: 0 1rem;
+  border: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.image-gallery .container li {
+  /* display: flex; */
+  border: 1px solid tomato;
+}
+.gallery-items {
+  /* display: flex; */
 }

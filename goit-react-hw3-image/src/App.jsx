@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/Header/Header';
+import ImageGallery from './components/ImageGallery/ImageGallery';
 import Menu from './components/Menu/Menu';
-// import MenuModal from './components/Modal/MenuModal/MenuModal';
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
       <Menu />
       {/* <MenuModal /> */}
       {/* Gallery */}
+      <ImageGallery />
     </>
   );
 }

@@ -34,4 +34,11 @@
 .search-btn {
   position: absolute;
   height: 60px;
+
+  &:focus,
+  &:active {
+    outline: none;
+    /* opacity: 1; */
+    /* background-color: inherit; */
+  }
 }

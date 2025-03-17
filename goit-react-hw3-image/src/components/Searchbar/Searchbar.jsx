@@ -3,15 +3,14 @@ import './Searchbar.css';
 import { FiSearch } from 'react-icons/fi';
 import { getAPI } from '../../data/pixabay';
 
-const Searchbar = ({ handleSearch }) => {
+const Searchbar = ({ onSubmit }) => {
   return (
     <>
       <header className="search-wrapper">
-        <form action="" className="search-form">
+        <form action="" className="search-form" onSubmit={onSubmit}>
           <button className="search-btn" type="submit">
-            <FiSearch onSubmit={handleSearch} />
+            <FiSearch />
           </button>
-          {/* <label htmlFor="search" className="search-label"> */}
           <input
             className="search-input"
             name="search"
@@ -21,7 +20,6 @@ const Searchbar = ({ handleSearch }) => {
             autoFocus
             placeholder="Search images and photos"
           />
-          {/* </label> */}
         </form>
       </header>
     </>

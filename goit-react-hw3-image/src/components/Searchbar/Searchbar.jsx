@@ -1,19 +1,12 @@
 import { useState } from 'react';
 import './Searchbar.css';
 import { FiSearch } from 'react-icons/fi';
-import { searchQuery } from '../../data/pixabay';
+import { getAPI } from '../../data/pixabay';
 
-const Searchbar = () => {
-  const [searchInput, setSearchInput] = useState('');
-  console.log(searchInput);
-  const handleSearch = (e) => {
-    e.preventDefault();
-    setSearchInput(e.target.search.value);
-  };
-
+const Searchbar = ({ handleSearch }) => {
   return (
     <>
-      <div className="search-wrapper">
+      <header className="search-wrapper">
         <form action="" className="search-form">
           <button className="search-btn" type="submit">
             <FiSearch onSubmit={handleSearch} />
@@ -26,11 +19,11 @@ const Searchbar = () => {
             type="text"
             autoComplete="off"
             autoFocus
-            placeholder="Search..."
+            placeholder="Search images and photos"
           />
           {/* </label> */}
         </form>
-      </div>
+      </header>
     </>
   );
 };

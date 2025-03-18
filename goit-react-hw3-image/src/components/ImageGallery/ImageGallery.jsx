@@ -1,6 +1,6 @@
 import './ImageGallery.css';
 
-const ImageGallery = ({ photos, photo }) => {
+const ImageGallery = ({ photos }) => {
   return (
     <div className="image-gallery-wrapper">
       <h1>Gallery</h1>
@@ -15,7 +15,7 @@ const ImageGallery = ({ photos, photo }) => {
                 src={webformatURL}
                 // largeImageURL={largeImageURL}
                 // tags={tags}
-                alt="Image"
+                alt={tags}
               />
             </li>
           </div>

@@ -10,7 +10,6 @@ const URL = `https://pixabay.com/api/?key=43611533-cbd3c8679d2736af7125873fa&q=y
 
 function App() {
   const [searchInput, setSearchInput] = useState('');
-
   const [page, setPage] = useState(1);
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -35,6 +34,9 @@ function App() {
         setLoading(loading);
         alert('O Search result');
         return;
+      }
+      if (page === 1) {
+        alert(`You found ${fetchedImages.totalHits} images!`);
       }
       if (page * 12 >= fetchedImages.totalHits) {
         setEnd(true);
@@ -77,7 +79,7 @@ function App() {
       {/* <MenuModal /> */}
       {/* Gallery */}
       <ImageGallery photos={images} />
-      <LoadMore onClick={handleClick} />
+      {images.length >= 2 && !end && <LoadMore onClick={handleClick} />}
     </>
   );
 }

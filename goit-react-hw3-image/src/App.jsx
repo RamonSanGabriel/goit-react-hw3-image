@@ -12,6 +12,7 @@ function App() {
   const [searchInput, setSearchInput] = useState('');
   const [page, setPage] = useState(1);
   const [images, setImages] = useState([]);
+  const [largeImage, setLargeImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [end, setEnd] = useState(false);
@@ -72,13 +73,19 @@ function App() {
     // console.log('click');
     setPage(page + 1);
   };
+  const handleClickImage = () => {
+    // console.log('large image');
+    const largeImage = images[0].largeImageURL;
+    // console.log(largeImage);
+    setLargeImage(largeImage);
+  };
   return (
     <>
       <Searchbar onSubmit={handleSearch} />
       <Menu />
       {/* <MenuModal /> */}
       {/* Gallery */}
-      <ImageGallery photos={images} />
+      <ImageGallery photos={images} onClick={handleClickImage} />
       {images.length >= 2 && !end && <LoadMore onClick={handleClick} />}
     </>
   );

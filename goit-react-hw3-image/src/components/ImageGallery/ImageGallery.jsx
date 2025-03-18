@@ -5,7 +5,7 @@ const ImageGallery = ({ photos }) => {
     <div className="image-gallery-wrapper">
       <h1>Gallery</h1>
       <ul className="gallery-list">
-        {photos.map(({ id, webformatURL, largeImageURL, tags }) => (
+        {photos.map(({ id, webformatURL, largeImageURL, tags, user }) => (
           // console.log(photo.webformatURL);
           <div key={id} className="image-gallery container">
             <li className="gallery-items">
@@ -14,9 +14,9 @@ const ImageGallery = ({ photos }) => {
                 // src="https://picsum.photos/200/300"
                 src={webformatURL}
                 // largeImageURL={largeImageURL}
-                // tags={tags}
                 alt={tags}
               />
+              <p>{user}</p>
             </li>
           </div>
         ))}

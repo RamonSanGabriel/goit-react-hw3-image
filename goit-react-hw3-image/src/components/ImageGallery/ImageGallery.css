@@ -8,13 +8,29 @@
 .gallery-list {
   padding: 0 1rem;
   gap: 1rem;
+
+  @media (width > 767px) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    flex-wrap: nowrap;
+  }
 }
 .image-gallery .container li {
   display: flex;
   width: fit-content;
 }
+.gallery-items {
+  border-top: 1px solid #efefef;
+}
 .gallery-image {
   width: 200px;
   height: 150px;
-  object-fit: contain;
+  object-fit: cover;
+  border-radius: 10px;
+
+  @media (width > 767px) {
+    width: 350px;
+    height: 250px;
+  }
 }

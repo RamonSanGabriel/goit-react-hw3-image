@@ -4,6 +4,7 @@ import ImageGallery from './components/ImageGallery/ImageGallery';
 import Menu from './components/Menu/Menu';
 import { useEffect, useState } from 'react';
 import { getAPI } from './data/pixabay';
+import LoadMore from './components/Buttons/LoadMore/LoadMore';
 
 const URL = `https://pixabay.com/api/?key=43611533-cbd3c8679d2736af7125873fa&q=yellow+flowers&image_type=photo`;
 
@@ -31,8 +32,13 @@ function App() {
       if (searchInput === '') return;
 
       if (fetchedImages.hits.length === 0) {
-        setEnd(true);
+        setLoading(loading);
+        alert('O Search result');
         return;
+      }
+      if (page * 12 >= fetchedImages.totalHits) {
+        setEnd(true);
+        alert('You reached the end of search results.');
       }
       setImages([...images, ...fetchedImages.hits]);
       setLoading(false);
@@ -41,6 +47,9 @@ function App() {
     } finally {
       setLoading(false);
     }
+    /* Error message if search is not found */
+    /* Message at the end of search */
+    /* Message if search found */
   };
 
   const handleSearch = (e) => {
@@ -57,7 +66,10 @@ function App() {
     }
     console.log(newSearch);
   };
-
+  const handleClick = () => {
+    // console.log('click');
+    setPage(page + 1);
+  };
   return (
     <>
       <Searchbar onSubmit={handleSearch} />
@@ -65,6 +77,7 @@ function App() {
       {/* <MenuModal /> */}
       {/* Gallery */}
       <ImageGallery photos={images} />
+      <LoadMore onClick={handleClick} />
     </>
   );
 }

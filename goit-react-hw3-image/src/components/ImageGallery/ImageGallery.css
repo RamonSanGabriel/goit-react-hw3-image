@@ -8,10 +8,12 @@
 .gallery-list {
   padding: 0 1rem;
   gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 
   @media (width > 767px) {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-gap: 20px;
     flex-wrap: nowrap;
   }
@@ -30,7 +32,7 @@
   border-radius: 10px;
 
   @media (width > 767px) {
-    width: 300px;
+    /* width: 300px; */
     height: 250px;
   }
 }

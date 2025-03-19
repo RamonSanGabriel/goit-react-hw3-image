@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { getAPI } from './data/pixabay';
 import LoadMore from './components/Buttons/LoadMore/LoadMore';
 import toast, { Toaster } from 'react-hot-toast';
-// import ImageModal from './components/Modal/ImageModal/ImageModal';
+import ImageModal from './components/Modal/ImageModal/ImageModal';
 
 const URL = `https://pixabay.com/api/?key=43611533-cbd3c8679d2736af7125873fa&q=yellow+flowers&image_type=photo`;
 
@@ -14,12 +14,12 @@ function App() {
   const [searchInput, setSearchInput] = useState('');
   const [page, setPage] = useState(1);
   const [images, setImages] = useState([]);
-  const [largeImage, setLargeImage] = useState(null);
+  const [largeImage, setLargeImage] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [end, setEnd] = useState(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalClose, setModalClose] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     (async () => {
@@ -61,54 +61,49 @@ function App() {
     } finally {
       setLoading(false);
     }
-    /* Error message if search is not found */
-    /* Message at the end of search */
-    /* Message if search found */
   };
 
   const handleSearch = (e) => {
     e.preventDefault();
-
-    setSearchInput(searchInput);
     const newSearch = e.target.search.value.trim().toLowerCase();
 
     if (newSearch !== searchInput) {
-      // setSearchInput({ searchInput: newSearch, page: 1, images: [] });
       setSearchInput(newSearch);
       setPage(1);
       setImages([]);
-      setEnd(!end);
+      setEnd(false);
     }
-    // console.log(newSearch);
   };
+
   const handleClick = () => {
-    // console.log('click');
     setPage(page + 1);
   };
-  const handleClickImage = (id) => {
-    // console.log('large image');
-    const selectedImage = images[0].largeImageURL;
-    // console.log(largeImage);
-    // setLargeImage(largeImage);
-    console.log(selectedImage);
+
+  const handleOpenModal = (id) => {
+    setModalOpen(true);
+    setCurrentIndex(id);
+    const selectedImage = images[id].largeImageURL; // Correctly set the large image URL
+    setLargeImage(selectedImage);
   };
-  const handleOpenModal = () => {
-    setModalIsOpen(true);
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
   };
+
   return (
     <>
       <Toaster position="bottom-right" reverseOrder={false} />
       <Searchbar onSubmit={handleSearch} />
       <Menu />
-      {/* <MenuModal /> */}
-      {/* Gallery */}
-      <ImageGallery
-        photos={images}
-        onClick={handleClickImage}
-        modalIsOpen={handleOpenModal}
-      />
+      <ImageGallery photos={images} onClick={handleOpenModal} />
       {images.length >= 2 && !end && <LoadMore onClick={handleClick} />}
-      {/* <ImageModal /> */}
+      {modalOpen && (
+        <ImageModal
+          onClick={handleCloseModal}
+          currentIndex={currentIndex}
+          selectLargeImage={largeImage} // Pass the correct large image URL
+        />
+      )}
     </>
   );
 }

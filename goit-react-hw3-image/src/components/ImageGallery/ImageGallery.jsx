@@ -1,7 +1,10 @@
 import './ImageGallery.css';
-import ImageModal from '../Modal/ImageModal/ImageModal';
+// import ImageModal from '../Modal/ImageModal/ImageModal';
+// import { useState } from 'react';
 
-const ImageGallery = ({ photos, onClick, modalIsOpen }) => {
+const ImageGallery = ({ photos, onClick }) => {
+  // const [modalClose, setModalClose] = useState(true);
+
   return (
     <div className="image-gallery-wrapper">
       <h1>Gallery</h1>
@@ -11,8 +14,8 @@ const ImageGallery = ({ photos, onClick, modalIsOpen }) => {
           <div key={id} className="image-gallery">
             <li
               className="gallery-items"
-              modalIsOpen={modalIsOpen}
               onClick={onClick}
+              // onClick={onClick}
             >
               <img
                 className="gallery-image"
@@ -24,7 +27,6 @@ const ImageGallery = ({ photos, onClick, modalIsOpen }) => {
                 alt={tags}
               />
               <p>{user}</p>
-              {modalIsOpen && <ImageModal largeImage={largeImageURL} />}
             </li>
           </div>
         ))}

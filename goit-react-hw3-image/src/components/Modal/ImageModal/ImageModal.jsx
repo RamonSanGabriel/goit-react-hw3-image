@@ -1,26 +1,15 @@
-import Modal from 'react-modal';
+import './ImageModal.css';
 
-Modal.setAppElement('#root');
-
-const ImageModalStyle = {
-  container: {
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    right: 'auto',
-    bottom: 'auto',
-    margin: '-50%',
-  },
-};
-const ImageModal = ({ isOpen, closeModal, largeImageURL }) => {
+const ImageModal = ({ selectLargeImage, onClick, currentIndex }) => {
   return (
-    <div>
-      {/* <button className="modal-button">OpenModal</button> */}
-      <Modal isOpen={isOpen} isClose={closeModal} style={ImageModalStyle}>
-        <div className="modal-content">
-          <img src={largeImageURL} />
-        </div>
-      </Modal>
+    <div className="overlay">
+      <button className="modal-button" onClick={onClick}>
+        &times;
+      </button>
+      <div className="modal-content">
+        <h1>Large Image</h1>
+        <img src={selectLargeImage} alt="Large Image" />
+      </div>
     </div>
   );
 };

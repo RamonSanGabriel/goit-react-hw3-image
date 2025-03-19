@@ -14,7 +14,7 @@ function App() {
   const [searchInput, setSearchInput] = useState('');
   const [page, setPage] = useState(1);
   const [images, setImages] = useState([]);
-  const [largeImage, setLargeImage] = useState('');
+  const [largeImage, setLargeImage] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [end, setEnd] = useState(false);

@@ -7,7 +7,7 @@ const ImageGallery = ({ photos, onClick }) => {
       <ul className="gallery-list">
         {photos.map(({ id, webformatURL, largeImageURL, tags, user }) => (
           // console.log(photo.webformatURL);
-          <div key={id} className="image-gallery container">
+          <div key={id} className="image-gallery">
             <li className="gallery-items" onClick={onClick}>
               <img
                 className="gallery-image"

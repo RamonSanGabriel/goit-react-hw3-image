@@ -5,6 +5,7 @@ import Menu from './components/Menu/Menu';
 import { useEffect, useState } from 'react';
 import { getAPI } from './data/pixabay';
 import LoadMore from './components/Buttons/LoadMore/LoadMore';
+import toast, { Toaster } from 'react-hot-toast';
 
 const URL = `https://pixabay.com/api/?key=43611533-cbd3c8679d2736af7125873fa&q=yellow+flowers&image_type=photo`;
 
@@ -33,15 +34,22 @@ function App() {
 
       if (fetchedImages.hits.length === 0) {
         setLoading(loading);
-        alert('O Search result');
+        toast.error('Search not found. Please try again!');
         return;
       }
       if (page === 1) {
-        alert(`You found ${fetchedImages.totalHits} images!`);
+        toast.success(`You found ${fetchedImages.totalHits} images!`);
       }
       if (page * 12 >= fetchedImages.totalHits) {
         setEnd(true);
-        alert('You reached the end of search results.');
+        toast('You reached the end of search results.', {
+          icon: '👋',
+          style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+          },
+        });
       }
       setImages([...images, ...fetchedImages.hits]);
       setLoading(false);
@@ -81,6 +89,7 @@ function App() {
   };
   return (
     <>
+      <Toaster position="top-right" reverseOrder={false} />
       <Searchbar onSubmit={handleSearch} />
       <Menu />
       {/* <MenuModal /> */}

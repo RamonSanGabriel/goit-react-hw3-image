@@ -11,9 +11,11 @@ const ImageGallery = ({ photos, onClick }) => {
             <li className="gallery-items" onClick={onClick}>
               <img
                 className="gallery-image"
-                // src="https://picsum.photos/200/300"
-                src={webformatURL}
-                // largeImageURL={largeImageURL}
+                src={
+                  webformatURL
+                    ? `${webformatURL}`
+                    : `https://fakeimg.pl/265x250?text=No+Image+Available`
+                }
                 alt={tags}
               />
               <p>{user}</p>

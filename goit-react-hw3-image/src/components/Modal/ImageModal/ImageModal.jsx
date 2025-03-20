@@ -1,14 +1,21 @@
 import './ImageModal.css';
 
-const ImageModal = ({ selectLargeImage, onClick, currentIndex }) => {
+const ImageModal = ({
+  selectLargeImage,
+  largeImageURL,
+  onClick,
+  currentIndex,
+  photos,
+  open,
+}) => {
   return (
-    <div className="overlay">
+    <div className="image-modal overlay">
       <button className="modal-button" onClick={onClick}>
         &times;
       </button>
       <div className="modal-content">
         <h1>Large Image</h1>
-        <img src={selectLargeImage} alt="Large Image" />
+        <img src={largeImageURL} alt="Large Image" width="90%" />
       </div>
     </div>
   );

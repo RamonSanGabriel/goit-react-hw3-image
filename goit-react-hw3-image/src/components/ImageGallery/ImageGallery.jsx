@@ -1,9 +1,10 @@
+import ImageModal from '../Modal/ImageModal/ImageModal';
 import './ImageGallery.css';
 // import ImageModal from '../Modal/ImageModal/ImageModal';
-// import { useState } from 'react';
+import { useState } from 'react';
 
-const ImageGallery = ({ photos, onClick }) => {
-  // const [modalClose, setModalClose] = useState(true);
+const ImageGallery = ({ photos, onClick, modalOpen }) => {
+  const [openModal, setOpenModal] = useState(false);
 
   return (
     <div className="image-gallery-wrapper">
@@ -31,6 +32,7 @@ const ImageGallery = ({ photos, onClick }) => {
           </div>
         ))}
       </ul>
+      {modalOpen && <ImageModal largeImageURL={largeImageURL} />}
     </div>
   );
 };

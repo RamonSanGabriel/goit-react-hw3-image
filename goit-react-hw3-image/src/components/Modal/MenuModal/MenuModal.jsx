@@ -1,8 +1,8 @@
 import { navbar } from '../../../data/navbar';
-import LeftArrowBtn from '../../Buttons/LeftArrowBtn/LeftArrowBtn';
+// import LeftArrowBtn from '../../Buttons/LeftArrowBtn/LeftArrowBtn';
 import './MenuModal.css';
 
-const MenuModal = ({ onClick }) => {
+const MenuModal = () => {
   return (
     <div className="overlay">
       <div className="menu-modal">

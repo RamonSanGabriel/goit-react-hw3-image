@@ -21,6 +21,8 @@ function App() {
   const [modalOpen, setModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // console.log(images[currentIndex].largeImageURL);
+
   useEffect(() => {
     (async () => {
       await fetchImages(searchInput, page);
@@ -30,8 +32,10 @@ function App() {
 
   const fetchImages = async (searchInput, page) => {
     try {
-      setLoading(true);
+      setLoading(!loading);
       const fetchedImages = await getAPI(searchInput, page);
+      // console.log(fetchedImages.hits[currentIndex].largeImageURL);
+      console.log(fetchedImages);
 
       if (searchInput === '') return;
 
@@ -42,6 +46,7 @@ function App() {
       }
       if (page === 1) {
         toast.success(`You found ${fetchedImages.totalHits} images!`);
+        // console.log(fetchedImages.hits[currentIndex]);
       }
       if (page * 12 >= fetchedImages.totalHits) {
         setEnd(true);
@@ -56,10 +61,10 @@ function App() {
       }
       setImages([...images, ...fetchedImages.hits]);
       setLoading(false);
-    } catch (error) {
-      setError(true);
+    } catch (err) {
+      setError(!error);
     } finally {
-      setLoading(false);
+      setLoading(loading);
     }
   };
 
@@ -80,11 +85,15 @@ function App() {
   };
 
   const handleOpenModal = (id) => {
-    setModalOpen(true);
     setCurrentIndex(id);
-    const selectedImage = images[id].largeImageURL; // Correctly set the large image URL
-    setLargeImage(selectedImage);
+    setModalOpen(true);
+    const selectedImage = images[currentIndex];
+    console.log(selectedImage);
+    // const selectedImage = images.hits.id; // Correctly set the image id
+    // const selectedImage = images.find((image) => image.id === selectedImageId);
+    // setLargeImage(selectedImage);
   };
+  // console.log(handleOpenModal);
 
   const handleCloseModal = () => {
     setModalOpen(false);
@@ -101,7 +110,9 @@ function App() {
         <ImageModal
           onClick={handleCloseModal}
           currentIndex={currentIndex}
-          selectLargeImage={largeImage} // Pass the correct large image URL
+          selectLargeImage={setLargeImage} // Pass the correct large image URL
+          photos={images}
+          open={handleOpenModal}
         />
       )}
     </>

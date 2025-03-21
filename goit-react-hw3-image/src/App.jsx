@@ -32,7 +32,7 @@ function App() {
 
   const fetchImages = async (searchInput, page) => {
     try {
-      setLoading(!loading);
+      setLoading(true);
       const fetchedImages = await getAPI(searchInput, page);
       // console.log(fetchedImages.hits[currentIndex].largeImageURL);
       console.log(fetchedImages);
@@ -40,8 +40,8 @@ function App() {
       if (searchInput === '') return;
 
       if (fetchedImages.hits.length === 0) {
-        setLoading(loading);
         toast.error('Search not found. Please try again!');
+        setLoading(loading);
         return;
       }
       if (page === 1) {
@@ -60,7 +60,7 @@ function App() {
         });
       }
       setImages([...images, ...fetchedImages.hits]);
-      setLoading(false);
+      // setLoading(false);
     } catch (err) {
       setError(!error);
     } finally {
@@ -86,6 +86,7 @@ function App() {
 
   const handleOpenModal = (id) => {
     setModalOpen(true);
+    setCurrentIndex(id);
     console.log(setCurrentIndex);
   };
 
@@ -98,7 +99,7 @@ function App() {
       <Toaster position="bottom-right" reverseOrder={false} />
       <Searchbar onSubmit={handleSearch} />
       <Menu />
-      <ImageGallery photos={images} onClick={handleOpenModal} />
+      <ImageGallery photos={images} onClick={() => handleOpenModal} />
       {images.length >= 2 && !end && <LoadMore onClick={handleClick} />}
       {modalOpen && (
         <ImageModal

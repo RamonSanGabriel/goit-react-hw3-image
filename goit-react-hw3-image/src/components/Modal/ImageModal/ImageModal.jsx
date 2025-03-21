@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import './ImageModal.css';
 
 const ImageModal = ({
@@ -22,9 +23,9 @@ const ImageModal = ({
       <div className="modal-content">
         <h1>Large Image</h1>
         {/* <img src={selectImage} alt="Large Image" width="90%" /> */}
-        {photos.map(({ id, largeImageURL }) => (
-          <div key={id}>
-            <img src={console.log(largeImageURL)} />
+        {photos.map((photo) => (
+          <div key={photo.id}>
+            <img src={photo.id.largeImageURL} />
           </div>
         ))}
       </div>

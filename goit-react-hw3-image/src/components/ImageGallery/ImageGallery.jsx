@@ -10,16 +10,13 @@ const ImageGallery = ({ photos, onClick, modalOpen }) => {
     <div className="image-gallery-wrapper">
       <h1>Gallery</h1>
       <ul className="gallery-list">
-        {photos.map(({ id, webformatURL, largeImageURL, tags, user }) => (
+        {photos.map(({ id, webformatURL, tags, user }) => (
           // console.log(photo.webformatURL);
           <div key={id} className="image-gallery">
-            <li
-              className="gallery-items"
-              onClick={onClick}
-              // onClick={onClick}
-            >
+            <li className="gallery-items" onClick={onClick}>
               <img
                 className="gallery-image"
+                // onClick={onClick}
                 src={
                   webformatURL
                     ? `${webformatURL}`
@@ -27,7 +24,7 @@ const ImageGallery = ({ photos, onClick, modalOpen }) => {
                 }
                 alt={tags}
               />
-              <p>{user}</p>
+              {/* <p>{user}</p> */}
             </li>
           </div>
         ))}
@@ -38,3 +35,5 @@ const ImageGallery = ({ photos, onClick, modalOpen }) => {
 };
 
 export default ImageGallery;
+{
+}

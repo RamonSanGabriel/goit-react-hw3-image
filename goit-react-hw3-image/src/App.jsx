@@ -14,7 +14,7 @@ function App() {
   const [searchInput, setSearchInput] = useState('');
   const [page, setPage] = useState(1);
   const [images, setImages] = useState([]);
-  const [largeImage, setLargeImage] = useState([]);
+  const [largeImage, setLargeImage] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [end, setEnd] = useState(false);
@@ -85,15 +85,9 @@ function App() {
   };
 
   const handleOpenModal = (id) => {
-    setCurrentIndex(id);
     setModalOpen(true);
-    const selectedImage = images[currentIndex];
-    console.log(selectedImage);
-    // const selectedImage = images.hits.id; // Correctly set the image id
-    // const selectedImage = images.find((image) => image.id === selectedImageId);
-    // setLargeImage(selectedImage);
+    console.log(setCurrentIndex);
   };
-  // console.log(handleOpenModal);
 
   const handleCloseModal = () => {
     setModalOpen(false);
@@ -108,9 +102,10 @@ function App() {
       {images.length >= 2 && !end && <LoadMore onClick={handleClick} />}
       {modalOpen && (
         <ImageModal
-          onClick={handleCloseModal}
+          onClose={handleCloseModal}
           currentIndex={currentIndex}
-          selectLargeImage={setLargeImage} // Pass the correct large image URL
+          setCurrentIndex={setCurrentIndex}
+          setLargeImage={setLargeImage} // Pass the correct large image URL
           photos={images}
           open={handleOpenModal}
         />

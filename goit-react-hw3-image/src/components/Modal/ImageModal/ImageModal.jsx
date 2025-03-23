@@ -1,33 +1,14 @@
-import { useState } from 'react';
-
 import './ImageModal.css';
 
-const ImageModal = ({
-  setLargeImage,
-  largeImageURL,
-  onClose,
-  currentIndex,
-  setCurrentIndex,
-  photos,
-}) => {
-  // const [index,setIndex] = useState(currentIndex);
-
-  // const selectImage = photos[0].largeImageURL;
-
-  // console.log(selectImage);
+const ImageModal = ({ handleCloseModal, image }) => {
   return (
     <div className="image-modal-overlay">
-      <button className="modal-button" onClick={onClose}>
+      <button className="modal-close-btn" onClick={handleCloseModal}>
         &times;
       </button>
+
       <div className="modal-content">
-        <h1>Large Image</h1>
-        {/* <img src={selectImage} alt="Large Image" width="90%" /> */}
-        {photos.map((photo) => (
-          <div key={photo.id}>
-            <img src={photo.id.largeImageURL} />
-          </div>
-        ))}
+        <img src={image} className="modal-image" alt="Large Image" />
       </div>
     </div>
   );

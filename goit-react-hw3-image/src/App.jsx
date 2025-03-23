@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { getAPI } from './data/pixabay';
 import LoadMore from './components/Buttons/LoadMore/LoadMore';
 import toast, { Toaster } from 'react-hot-toast';
-import ImageModal from './components/Modal/ImageModal/ImageModal';
+// import ImageModal from './components/Modal/ImageModal/ImageModal';
 
 const URL = `https://pixabay.com/api/?key=43611533-cbd3c8679d2736af7125873fa&q=yellow+flowers&image_type=photo`;
 
@@ -18,10 +18,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [end, setEnd] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  // console.log(images[currentIndex].largeImageURL);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -84,33 +81,18 @@ function App() {
     setPage(page + 1);
   };
 
-  const handleOpenModal = (id) => {
-    setModalOpen(true);
-    setCurrentIndex(id);
-    console.log(setCurrentIndex);
-  };
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
-  };
-
   return (
     <>
       <Toaster position="bottom-right" reverseOrder={false} />
       <Searchbar onSubmit={handleSearch} />
       <Menu />
-      <ImageGallery photos={images} onClick={() => handleOpenModal} />
+      <ImageGallery
+        images={images}
+        // setLargeImage={setLargeImage}
+        // onClick={() => handleOpenModal}
+        // onClose={handleCloseModal}
+      />
       {images.length >= 2 && !end && <LoadMore onClick={handleClick} />}
-      {modalOpen && (
-        <ImageModal
-          onClose={handleCloseModal}
-          currentIndex={currentIndex}
-          setCurrentIndex={setCurrentIndex}
-          setLargeImage={setLargeImage} // Pass the correct large image URL
-          photos={images}
-          open={handleOpenModal}
-        />
-      )}
     </>
   );
 }

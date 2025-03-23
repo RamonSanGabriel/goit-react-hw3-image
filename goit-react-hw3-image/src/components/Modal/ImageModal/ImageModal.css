@@ -15,3 +15,12 @@
   cursor: pointer;
   z-index: 1000;
 }
+
+.modal-image {
+  max-width: 75%;
+}
+
+.modal-close-btn {
+  padding: 0.25rem 0.75rem;
+  margin-bottom: 0.5rem;
+}
